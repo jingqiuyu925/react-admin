@@ -1,13 +1,61 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
-import App from './App';
+// import App from './App';
 import * as serviceWorker from './serviceWorker';
+class New extends React.Component{
+  constructor(props) {
+    super(props);
+    this.state={
+       arr:props.newarr
+    }
+  }
+  componentDidMount(){
+      console.log(this.props)
+  }
+  render(){
+     return (
+       <div>
+           {this.state.arr.map( (item,i)=>{
+             return  <li key={i}>{item}+++++{i}</li>
+           })}
+       </div>
+     )
+  }
+}
+let arr=['盖伦','寒冰']
+class Com extends React.Component {
+   constructor(props) {
+    super(props);
+    this.state={
+      name:'嘻嘻'
+    }
+  }
+   add=()=>{
+        this.setState({
+        name:'hahh',
+        arr:arr.push('蛮子')
+        },()=>{
+        })
+       
+
+   }
+  render() {
+    return (
+      <div>
+        <New newarr={arr} />
+      <h1>11111111</h1>
+    <button onClick={this.add}>点击事件 {this.state.name}</button>
+      </div>
+    )
+  }
+}
 
 ReactDOM.render(
-  <React.StrictMode>
-    <App />
-  </React.StrictMode>,
+  // <React.StrictMode>
+  //   <App />
+  // </React.StrictMode>,
+  <Com />,
   document.getElementById('root')
 );
 
